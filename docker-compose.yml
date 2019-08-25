@@ -13,7 +13,7 @@ services:
       - escapepod-data:/var/lib/postgresql/data
 
   escapepod:
-    build: .
+    image: rphillips/escapepod:latest
     depends_on:
       - db
     networks:

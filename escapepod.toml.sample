@@ -2,10 +2,10 @@
 address = ":5000"
 
 [db]
-type = "sqlite"
-url = "escapepod.db"
+#type = "sqlite"
+#url = "escapepod.db"
 
-#type = "postgres"
+type = "postgres"
 host = "db"
 port = 5432
 dbname = "escapepod"
