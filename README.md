@@ -14,6 +14,8 @@ escapepod is a standalone, self-hosted, podcast manager. It includes a modern fr
 
 ## Running Escapepod
 
+Use the included [docker-compose.yml](https://raw.githubusercontent.com/rphillips/escapepod/master/docker-compose.yml).
+
 ```sh
 docker-compose up
 ```
