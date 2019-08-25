@@ -4,10 +4,9 @@ For local development the following dependencies are required:
 
 * Nodejs 11+
 * Golang 1.12+
-* Docker and Docker-Compose (Postgresql database)
+* Docker and Docker-Compose (Postgresql or Sqlite3 database)
 
-Escapepod has the following components a frontend and backend component. It
-also relies on a database, currently Postgresql.
+Escapepod has the following components a frontend and backend component. The internal sqlite3 database can be used or postgresql.
 
 ## Frontend
 
