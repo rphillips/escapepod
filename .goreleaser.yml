@@ -32,18 +32,17 @@ archive:
   name_template: "{{ .ProjectName  }}-{{ .Tag  }}-{{ .Os  }}-{{ .Arch  }}"
 
 checksum:
-  name_template: 'SHA256SUMS'
+  name_template: "SHA256SUMS"
 
 dockers:
-  -
-    goos: linux
+  - goos: linux
     goarch: amd64
     skip_push: true
     binaries:
-    - escapepod
+      - escapepod
     image_templates:
-    - "rphillips/escapepod:latest"
-    - "rphillips/escapepod:{{ .Tag }}"
+      - "rphillips/escapepod:latest"
+      - "rphillips/escapepod:{{ .Tag }}"
     dockerfile: Dockerfile
     extra_files:
-    - escapepod.toml.sample
+      - escapepod.toml.sample
