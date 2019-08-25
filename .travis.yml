@@ -3,14 +3,10 @@ language: go
 go:
   - 1.12.x
 
-before_install:
-  - https://deb.nodesource.com/setup_12.x | sudo -E bash -
+install:
+  - curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
 
-addons:
-  apt:
-    packages:
-      - rpm
-      - nodejs
 env:
   global:
     secure: BlGGUiXL0giP29/iDt+4W9XSpeTWk0RtP4G8NcnTh3T1q6bfUJOduAIGwe+J9c9ckD8dWdv8ipetuoehaq54QL1RVBz5DoIaMC+Dn5zJQVGu7bW4Pmc+EAVMPPmApXlR3eirgd3iGkU+jYmN+kfNS29h+mXt5/vDqz84pvXQJADQK6aJ0FgDOItoIoHyKv1WSDVXDaopSstBcySqB936LKpIFbFFE6WWEAfSy+U3mSbGQmR/ASjCVA+S8+cPcs1J9Ng8XZrTkpPxC8I+Xz0cALnE+igSbyO1pWXrbcYiBHCCXdXm3u3644hKJVOKUG5eGo7RG/hiYUeDoftzW9+YqNbAnXp2C33+R86KcfudqH9boCORwAzhCb8ikk5BdACnM7INMrsAco0978MnAIhAWWQek8pesq/T2AebpWp3yvOm98eXPht/p3udK2rvwqT+PR56GDlDM8AmF0nO/mqSheOfWAcLNzwfPmI+qakVy9vuV0bJDYs3bGGLiJMtfu12NQ9mmZmuwNqDR3ZJV2RLPFOzaKRk+GC1Yn+jg7qcesLTnoE8tNQMMgmd/rJ0G3ux48b5qpRtWewXLbNetORxRFoKh1efMXBZANHG1BZGEcoLotFEVRvygJvIF3fxlGJWvX80QD1gpJ3OskRjr7famtQ7kz09ue46y/qCkMCrraM=
