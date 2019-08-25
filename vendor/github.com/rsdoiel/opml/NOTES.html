@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/css/site.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+
+</header>
+<section>
+<h1>misc notes</h1>
+
+<p>Example using the &ldquo;,any,attr&rdquo; xml dsl</p>
+
+<pre><code class="language-go">    package main
+    
+    import (
+    	&quot;encoding/json&quot;
+    	&quot;encoding/xml&quot;
+    	&quot;fmt&quot;
+    )
+    
+    type CustomAttrs []xml.Attr
+    
+    func (cattr CustomAttrs) MarshalJSON() ([]byte, error) {
+    	m := map[string]string{}
+    	for _, attr := range cattr {
+    		k := attr.Name.Local
+    		v := attr.Value
+    		if k != &quot;&quot; {
+    			m[k] = v
+    		}
+    	}
+    
+    	return json.Marshal(m)
+    }
+    
+    func main() {
+    	type Email struct {
+    		Where string `xml:&quot;where,attr&quot;`
+    		Addr  string
+    		Attrs CustomAttrs `xml:&quot;,any,attr&quot; json:&quot;custom_attrs,omitempty&quot;`
+    	}
+    	type Address struct {
+    		City, State string
+    	}
+    	type Result struct {
+    		XMLName xml.Name `xml:&quot;Person&quot; json:&quot;-&quot;`
+    		Name    string   `xml:&quot;FullName&quot;`
+    		Phone   string
+    		Email   []Email
+    		Groups  []string `xml:&quot;Group&gt;Value&quot;`
+    		Address
+    	}
+    	v := Result{Name: &quot;none&quot;, Phone: &quot;none&quot;}
+    	data := `
+    		&lt;Person&gt;
+    			&lt;FullName&gt;Grace R. Emlin&lt;/FullName&gt;
+    			&lt;Company&gt;Example Inc.&lt;/Company&gt;
+    			&lt;Email where=&quot;home&quot; preferred=&quot;true&quot; is_secret=&quot;true&quot;&gt;
+    				&lt;Addr&gt;gre@example.com&lt;/Addr&gt;
+    			&lt;/Email&gt;
+    			&lt;Email where='work' preferred=&quot;false&quot;&gt;
+    				&lt;Addr&gt;gre@work.com&lt;/Addr&gt;
+    			&lt;/Email&gt;
+    			&lt;Group&gt;
+    				&lt;Value&gt;Friends&lt;/Value&gt;
+    				&lt;Value&gt;Squash&lt;/Value&gt;
+    			&lt;/Group&gt;
+    			&lt;City&gt;Hanga Roa&lt;/City&gt;
+    			&lt;State&gt;Easter Island&lt;/State&gt;
+    		&lt;/Person&gt;
+    	`
+    	err := xml.Unmarshal([]byte(data), &amp;v)
+    	if err != nil {
+    		fmt.Printf(&quot;error: %v&quot;, err)
+    		return
+    	}
+    	fmt.Printf(&quot;XMLName: %#v\n&quot;, v.XMLName)
+    	fmt.Printf(&quot;Name: %q\n&quot;, v.Name)
+    	fmt.Printf(&quot;Phone: %q\n&quot;, v.Phone)
+    	fmt.Printf(&quot;Email: %v\n&quot;, v.Email)
+    	fmt.Printf(&quot;Groups: %v\n&quot;, v.Groups)
+    	fmt.Printf(&quot;Address: %v\n&quot;, v.Address)
+    	src, _ := json.MarshalIndent(v, &quot;&quot;, &quot; &quot;)
+    	fmt.Printf(&quot;json: %s&quot;, src)
+    }
+</code></pre>
+
+</section>
+<nav>
+<ul>
+<li><a href="/">HOME</a></li>
+<li><a href="./">README</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="docs/">DOCUMENTATION</a></li>
+<li><a href="install.html">INSTALL</a></li>
+<li><a href="https://github.com/rsdoiel/opml">Github</a></li>
+</ul>
+
+</nav>
+<footer>
+copyright (c) 2019 all rights reserved.
+<a href="https://github.com/rsdoiel/opml/releases/latest">Released</a> under the <a href="http://opensource.org/licenses/BSD-3-Clause">BSD 3-Clause License</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/css/site.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+
+</header>
+<section>
+<h2>Next</h2>
+
+<ul>
+<li>[ ] create a command line tool that reads an OPML and appends a element to the list (e.g. adds a feed URL to an OPML list of feeds)
+
+<ul>
+<li>basic verbs would be insert (insert a new list element), append (a new list element), replace (replace a list element) delete (a list element), and find (return the path to an element by name or attribute value)
+
+<ul>
+<li>append, insert, replace takes a path and the value to update with</li>
+<li>delete takes a path to the item to be deleted, if you try to delete the root list you get back an empty list</li>
+<li>find takes an attribute name and value and returns a path</li>
+</ul></li>
+<li>the tree the location for the verb to operate would be assumed to be the root or the index number of the items as a path
+
+<ul>
+<li>append &ldquo;URL&rdquo; would append the url to the root of the list</li>
+<li>append &ldquo;URL&rdquo; /3 would append the UR&rdquo; to the with item in the root list</li>
+<li>append &ldquo;URL&rdquo; /3/2 would apend the URL the third items&rsquo; second entry</li>
+<li>find ITEN_NAME append NEW_ITEM would find the item in the OPML tree, then append the content</li>
+</ul></li>
+</ul></li>
+<li>[ ] create a tool that can read an OPML file, harvest the current feeds, index for browsing and support an option to send interesting articles to Pocket</li>
+<li>[ ] Add a opml.Walk() function to package</li>
+<li>[ ] Add support to process Frontier&rsquo;s fttb into OPML
+
+<ul>
+<li>See <a href="http://scripting.com/fatpages/about.html">http://scripting.com/fatpages/about.html</a>, <a href="http://scripting.com/fatpages/faq.html">http://scripting.com/fatpages/faq.html</a> and <a href="http://scripting.com/fatpages/outline.html">http://scripting.com/fatpages/outline.html</a></li>
+<li>fttb is a &ldquo;fatpages&rdquo; document, it is a Base 64 encoded document like is done with email.</li>
+</ul></li>
+</ul>
+
+<h2>Someday, maybe</h2>
+
+<ul>
+<li>opmlviewer - a cli/terminal based opml viewer</li>
+<li>omplfilter
+
+<ul>
+<li>might function something like Unix find command</li>
+</ul></li>
+<li>ompledit - CRUD operations to individual Outline elements and element lists</li>
+<li>Review River5 by Dave Winer for insights into what additional functions are needed in package</li>
+</ul>
+
+<h2>Completed</h2>
+
+<ul>
+<li>[x] Add opml2json</li>
+<li>[x] Add support for custom attributes</li>
+<li>[x] Add Bash script to fetch Dave Winer&rsquo;s userland samples at <a href="http://scripting.com/misc/userlandSamples.zip">http://scripting.com/misc/userlandSamples.zip</a></li>
+</ul>
+
+</section>
+<nav>
+<ul>
+<li><a href="/">HOME</a></li>
+<li><a href="./">README</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="docs/">DOCUMENTATION</a></li>
+<li><a href="install.html">INSTALL</a></li>
+<li><a href="https://github.com/rsdoiel/opml">Github</a></li>
+</ul>
+
+</nav>
+<footer>
+copyright (c) 2019 all rights reserved.
+<a href="https://github.com/rsdoiel/opml/releases/latest">Released</a> under the <a href="http://opensource.org/licenses/BSD-3-Clause">BSD 3-Clause License</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:11
+    networks:
+      - escapepod
+    environment:
+      - POSTGRES_PASSWORD=escapepod
+      - POSTGRES_USER=escapepod
+      - POSTGRES_DB=escapepod
+    volumes:
+      - escapepod-data:/var/lib/postgresql/data
+
+  escapepod:
+    build: .
+    depends_on:
+      - db
+    networks:
+      - escapepod
+    ports:
+      - "5000:5000"
+
+networks:
+  escapepod:
+
+volumes:
+  escapepod-data:

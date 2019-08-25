@@ -1,0 +1,11 @@
+session_name: escapepod
+windows:
+  - window_name: docker
+    panes:
+      - docker-compose -f docker-compose-dev.yml up
+  - window_name: frontend
+    panes:
+      - cd frontend-vue && yarn serve
+  - window_name: backend
+    panes:
+      - modd

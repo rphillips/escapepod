@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:11
+    networks:
+      - escapepod
+      - default
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=escapepod
+      - POSTGRES_USER=escapepod
+      - POSTGRES_DB=escapepod
+    volumes:
+      - escapepod-data:/var/lib/postgresql/data
+
+networks:
+  escapepod:
+
+volumes:
+  escapepod-data:

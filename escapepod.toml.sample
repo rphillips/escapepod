@@ -1,0 +1,14 @@
+[app]
+address = ":5000"
+
+[db]
+type = "sqlite"
+url = "escapepod.db"
+
+#type = "postgres"
+host = "db"
+port = 5432
+dbname = "escapepod"
+user = "escapepod"
+password = "escapepod"
+sslmode = "disable"

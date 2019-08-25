@@ -1,0 +1,140 @@
+This pseudo documentation to think through how a _opmlfind_ might work. It is inspired by Unix _find_ command. Should also consider how [jq](https://github.com/stedolan/jq) and [jid](https://github.com/simeji/jid) work with JSON data.
+
+# OPMLFIND
+
+# NAME
+     opmlfind -- walk a an OPML outline
+
+# SYNOPSIS
+     find [-L | -P] [-EXdsx] [-f path...]
+     find [-L | -P] [-EXdsx] -f path] [path...] [expression]
+
+# DESCRIPTION
+
+The opmlfind utility recursively descends the outline for each OPML file
+listed, evaluating an _expression_ (composed of the ``primaries'' and
+``operands'' listed below) in terms of each outline.
+
+The options are as follows:
+
+     -E    Interpret regular expressions followed by --regex and --iregex pri-
+           maries as extended (modern) regular expressions rather than basic
+           regular expressions (BRE's).  The re_format(7) manual page fully
+           describes both formats.
+
+     -L    Cause the outline information and outline element type return.
+
+     -d    Cause opmlfind to perform a depth-first traversal, i.e., outlines
+           are visited in post-order and all entries in a outline will be
+           acted on before the outline itself.  By default, opmlfind visits
+           outlines in pre-order, i.e., before their contents.  Note, the
+           default is not a breadth-first traversal.
+
+     -f    Specify a outline hierarchy for opmlfind to traverse.  Outline hierarchies
+           may also be specified as the operands immediately following the
+           options.
+
+     -s    Cause opmlfind to traverse the outline hierarchies in lexicographical
+           order, i.e., alphabetical order within each directory.  Note:
+           `opmlfind -s' and `opmlfind | opmlsort' may give different results.
+
+# PRIMARIES
+
+All primaries which take a numeric argument allow the number to be pre-
+ceded by a plus sign (``+'') or a minus sign (``-'').  A preceding plus
+sign means ``more than n'', a preceding minus sign means ``less than n''
+and neither means ``exactly n''.
+
+     -Bmin n
+             True if the difference between the time of a outline nodes's cre-
+             ation and the time opmlfind was started, rounded up to the next full
+             minute, is n minutes.
+
+     -Btime n[smhdw]
+             If no units are specified, this primary evaluates to true if the
+             difference between the time of an outline node creation and the
+             time opmlfind was started, rounded up to the next full 24-hour
+             period, is _n 24-hour periods.
+
+             If units are specified, this primary evaluates to true if the
+             difference between the time of a outline node's creation and the
+             time opmlfind was started is exactly n units.  The
+             supported time units.
+
+             ss       second
+             mm       minute (60 seconds)
+             hh       hour (60 minutes)
+             dd       day (24 hours)
+             ww       week (7 days)
+
+             Any number of units may be combined in one -Btime argument, for
+             example, ``-Btime -1h30m''.  Units are probably only useful when
+             used in conjunction with the ++ or -- modifier.
+
+     -d      Same as depth. 
+
+     -depth  Always true; same as the -d option.
+
+     -depth n
+             True if the depth of the outline node relative to the starting point of
+             the traversal is n.
+
+     -empty  True if the current outline node is empty.
+
+     -iname pattern
+             Like -name, but the match is case insensitive.
+
+     -ipath pattern
+             Like -path, but the match is case insensitive.
+
+     -iregex pattern
+             Like -regex, but the match is case insensitive.
+
+     -maxdepth n
+             Always true; descend at most n outline levels below the command
+             root.  If any -maxdepth primary is specified, it
+             applies to the entire expression even if it would not normally be
+             evaluated.  ``-maxdepth 0'' limits the whole search to the com-
+             mand line arguments.
+
+     -mindepth n
+             Always true; do not apply any tests or actions at levels less
+             than n.  If any -mindepth primary is specified, it applies to the
+             entire expression even if it would not normally be evaluated.
+             ``-mindepth 1'' processes all but the command line arguments.
+
+     -name pattern
+             True if the last component of the outline node being examined matches
+             pattern.  Special shell pattern matching characters (``['',
+             ``]'', ``*'', and ``?'') may be used as part of pattern.  These
+             characters may be matched explicitly by escaping them with a
+             backslash (``\'').
+
+     -prune  This primary always evaluates to true.  It causes opmlfind to not
+             descend into the current outline node.  Note, the -prune primary has no
+             effect if the -d option was specified.
+
+     -regex pattern
+             True if the whole path of the outline node matches pattern using regular
+             expression.  
+
+     -type t
+             True if the opml outline node is of the specified type.  Possible types
+             are as follows:
+
+             rss    link it to an RSS resource
+             text   treat the outline node as plain text
+             ...
+
+
+ENVIRONMENT
+
+The LANG, LC_ALL, LC_COLLATE, LC_CTYPE, LC_MESSAGES and LC_TIME environ-
+ment variables affect the execution of the ffiinndd utility as described in
+environ(7).
+
+EXAMPLES
+
+The following examples are shown as given to the shell:
+
+     opmlfind ...
