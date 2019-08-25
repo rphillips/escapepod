@@ -5,7 +5,7 @@ env:
 
 before:
   hooks:
-    - make build-frontend
+    - make frontend-deps build-frontend
 
 builds:
   - binary: escapepod

@@ -1,5 +1,7 @@
 # Escapepod
 
+[![Build Status](https://travis-ci.org/rphillips/escapepod.svg?branch=master)](https://travis-ci.org/rphillips/escapepod)
+
 escapepod is a standalone, self-hosted, podcast manager. It includes a modern frontend web interface, an internal player, and a flexible API for mobile applications to use.
 
 ![Image 1](https://user-images.githubusercontent.com/1963/63644305-98656580-c6ab-11e9-9b69-8a5e66be69c3.png)
