@@ -14,6 +14,7 @@ See [HACKING.md](./HACKING.md)
 * OPML Import
 * Individual RSS Feed import
 * Embedded Player using [plyr](https://github.com/sampotts/plyr)
+* UI is embedded in the binary
 
 ## TODO
 
