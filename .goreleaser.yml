@@ -36,7 +36,6 @@ checksum:
 dockers:
   - goos: linux
     goarch: amd64
-    skip_push: true
     binaries:
       - escapepod
     image_templates:
