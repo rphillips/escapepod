@@ -1,22 +1,19 @@
 language: go
-
 env:
   global:
     - secure: BlGGUiXL0giP29/iDt+4W9XSpeTWk0RtP4G8NcnTh3T1q6bfUJOduAIGwe+J9c9ckD8dWdv8ipetuoehaq54QL1RVBz5DoIaMC+Dn5zJQVGu7bW4Pmc+EAVMPPmApXlR3eirgd3iGkU+jYmN+kfNS29h+mXt5/vDqz84pvXQJADQK6aJ0FgDOItoIoHyKv1WSDVXDaopSstBcySqB936LKpIFbFFE6WWEAfSy+U3mSbGQmR/ASjCVA+S8+cPcs1J9Ng8XZrTkpPxC8I+Xz0cALnE+igSbyO1pWXrbcYiBHCCXdXm3u3644hKJVOKUG5eGo7RG/hiYUeDoftzW9+YqNbAnXp2C33+R86KcfudqH9boCORwAzhCb8ikk5BdACnM7INMrsAco0978MnAIhAWWQek8pesq/T2AebpWp3yvOm98eXPht/p3udK2rvwqT+PR56GDlDM8AmF0nO/mqSheOfWAcLNzwfPmI+qakVy9vuV0bJDYs3bGGLiJMtfu12NQ9mmZmuwNqDR3ZJV2RLPFOzaKRk+GC1Yn+jg7qcesLTnoE8tNQMMgmd/rJ0G3ux48b5qpRtWewXLbNetORxRFoKh1efMXBZANHG1BZGEcoLotFEVRvygJvIF3fxlGJWvX80QD1gpJ3OskRjr7famtQ7kz09ue46y/qCkMCrraM=
+    - secure: molfFf1o88S/+83ONgheul5r8QNFvNMOntDhdAu31PpH8G4GLje929TuSOvgfM/hu6stu+pkfyx+qNcoWEi3lR1aHDR+epcV6XHHY/OPC8rB7FDIcTMUBRKM5xxserhCzLr7t86ky0a2jHeoZl6V9cztKsLkE20L1ptlq6OG7s1EiFVrr1kNB7VAutaHvMIGqche5YYcsJJejfBsbus10Y9OrFnKgvXOK6k4j9NdXRdvJzxrOsgmxcvZv8wW/segwfvjGRPN8XgpoejH81AznY2xlqVqis/KdYVYGiE+8mD/GQOQKqoxzV7P73pDIcwYyAYkogwLf+qJQfwVrGbD6sTY8RjLY5cZjtYqX2H2+7WIW9GoFPeeoTpVDUqHuEM71yR5bwmyfXhTx7kByUZPGNy2Or0k2aif0bCBv6k1ZVc66RZ/9A8o6XjLZCIlCB1by3JBgpsovLg849TXdBIPVEvYJbGRf5ShGgDUgQVAiKGJgfcjPV1sLo22Gh5x0zgR5XXFZWgU3KKVN2gNI4ixQv1klWTwIeOx4Emmm2B9uHLh9KoR4j116CQRjCmrk/L4zle5oGz3S2Al9CZi7wISGpeqfMFhYP3zNORC5fQvZDTZHfqo3UxQVD3o1qhikaAj77PYCscvYrddCSQDR1EO7gSqnMShGXaoV+GambZ0eSI=
     - TRAVIS_NODE_VERSION="12.9.0"
-
 go:
   - 1.12.x
-
 before_install:
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm
+    && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm
+    install $TRAVIS_NODE_VERSION
 services:
   - docker
-
 after_success:
   - test -n "$TRAVIS_TAG" && docker login -u=rphillips -p="$DOCKER_PASSWORD"
-
 deploy:
   - provider: script
     skip_cleanup: true
