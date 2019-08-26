@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go v0.44.3 // indirect
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
 	github.com/denisenkom/go-mssqldb v0.0.0-20190806190131-db2462fef53b // indirect
-	github.com/disintegration/imaging v1.6.0
+	github.com/disintegration/imaging v1.6.1
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/jinzhu/gorm v1.9.10
 	github.com/knadh/stuffbin v1.0.0
