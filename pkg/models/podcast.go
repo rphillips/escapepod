@@ -5,7 +5,10 @@ import (
 	"bytes"
 	"image"
 	"image/jpeg"
+
+	// import png to support png
 	_ "image/png"
+
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -36,8 +39,8 @@ type Podcast struct {
 func (p *Podcast) Crawl() error {
 	parser := gofeed.NewParser()
 	var feed *gofeed.Feed
-	if strings.HasPrefix("file://", *p.FeedURL) {
-		fileData, err := ioutil.ReadFile(strings.TrimPrefix("file://", *p.FeedURL))
+	if strings.HasPrefix(*p.FeedURL, "file://") {
+		fileData, err := ioutil.ReadFile(strings.TrimPrefix(*p.FeedURL, "file://"))
 		if err != nil {
 			return err
 		}

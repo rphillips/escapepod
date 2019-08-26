@@ -78,8 +78,8 @@ var serveCmd = &cobra.Command{
 			}
 		}()
 
-		// gracefull shutdown
-		sigChan := make(chan os.Signal)
+		// graceful shutdown
+		sigChan := make(chan os.Signal, 1)
 		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 		<-sigChan
 

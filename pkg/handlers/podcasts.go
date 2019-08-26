@@ -83,12 +83,16 @@ func PodcastsImport(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
-	go importFromOPML(app, parsed)
+	go func() {
+		if err := importFromOPML(app, parsed); err != nil {
+			c.Logger().Errorf("could not import OPML: %v", err)
+		}
+	}()
 	return c.JSON(http.StatusOK, "OK")
 }
 
 func importFromOPML(app *app.App, o *opml.OPML) error {
-	if len(o.Body.Outline) <= 0 {
+	if len(o.Body.Outline) == 0 {
 		return fmt.Errorf("invalid opml")
 	}
 	if o.Body.Outline[0].Text != "feeds" {

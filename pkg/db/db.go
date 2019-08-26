@@ -5,7 +5,9 @@ import (
 	"strings"
 
 	"github.com/jinzhu/gorm"
+	// import postgres
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	// import sqlite
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/gommon/log"
 	"github.com/spf13/viper"
@@ -13,17 +15,8 @@ import (
 	"github.com/rphillips/escapepod/pkg/models"
 )
 
-type DBParams struct {
-	Host     string
-	Port     int
-	User     string
-	Password string
-	DBName   string
-	SSLMode  string
-}
-
 func openPostgres(dbURL string) (*gorm.DB, error) {
-	if len(dbURL) == 0 {
+	if dbURL == "" {
 		dbURL = strings.Join([]string{
 			"host=" + viper.GetString("db.host"),
 			"port=" + viper.GetString("db.port"),

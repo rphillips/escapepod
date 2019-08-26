@@ -15,14 +15,12 @@ func RegisterRoutes(r *echo.Echo, fs stuffbin.FileSystem) {
 	r.GET("/*", echo.WrapHandler(fs.FileServer()))
 
 	api := r.Group("/api/v1")
-	{
-		api.POST("/podcasts", handlers.PodcastsCreate)
-		api.POST("/podcasts/import", handlers.PodcastsImport)
-		api.GET("/podcasts", handlers.PodcastsList)
-		api.GET("/podcasts/:id", handlers.PodcastsGet)
-		api.GET("/podcasts/:id/episodes", handlers.PodcastsGetEpisodes)
-		api.GET("/podcasts/:id/image", handlers.PodcastsImageGet)
-	}
+	api.POST("/podcasts", handlers.PodcastsCreate)
+	api.POST("/podcasts/import", handlers.PodcastsImport)
+	api.GET("/podcasts", handlers.PodcastsList)
+	api.GET("/podcasts/:id", handlers.PodcastsGet)
+	api.GET("/podcasts/:id/episodes", handlers.PodcastsGetEpisodes)
+	api.GET("/podcasts/:id/image", handlers.PodcastsImageGet)
 }
 
 func handleIndexPage(c echo.Context) error {

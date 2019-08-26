@@ -11,7 +11,7 @@ import (
 type Job struct {
 }
 
-/// Crawler
+// Crawler
 type Crawler struct {
 	db         *gorm.DB
 	workerChan chan *Job
@@ -29,7 +29,7 @@ func NewCrawler(db *gorm.DB) *Crawler {
 	return crawler
 }
 
-/// Run intended to be run from a go routine
+// Run intended to be run from a go routine
 func (c *Crawler) Run(concurrency int, stopCh <-chan struct{}) {
 	go c.Scheduler(stopCh)
 	for i := 0; i < concurrency; i++ {
@@ -38,7 +38,7 @@ func (c *Crawler) Run(concurrency int, stopCh <-chan struct{}) {
 	<-stopCh
 }
 
-/// Scheduler intended to be run from a goroutine
+// Scheduler intended to be run from a goroutine
 func (c *Crawler) Scheduler(stopCh <-chan struct{}) {
 	log.Debug("Starting scheduler")
 	defer log.Debug("Stopping scheduler")
