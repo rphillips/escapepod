@@ -43,3 +43,14 @@ pack-releases:
 .PHONY: release
 release:
 	goreleaser release --rm-dist
+
+.PHONY: verify
+verify: install-tools
+	golangci-lint run
+	gosec -severity high --confidence medium -exclude G204 -quiet ./...
+
+
+.PHONY: install-tools
+install-tools:
+	cd $(shell mktemp -d) && GO111MODULE=on go get github.com/securego/gosec/cmd/gosec@4b59c948083cd711b6a8aac8f32721b164899f57
+	cd $(shell mktemp -d) && GO111MODULE=on go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.17.1
