@@ -36,7 +36,7 @@
                 <td>
                   <v-layout>
                     <span class="text-truncate" style="max-width: 300px">{{ ep.description }}</span>
-                    <v-menu v-model="menu" :position-x="x" :position-y="y" absolute offset-y>
+                    <v-menu v-model="menu" max-width="544">
                       <template v-slot:activator="{ on }">
                         <v-icon right small v-on="on" class="right-img">mdi-information-variant</v-icon>
                       </template>
