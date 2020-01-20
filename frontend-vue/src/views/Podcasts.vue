@@ -1,14 +1,12 @@
 <template>
   <v-container v-if="podcasts.length > 0" fluid grid-list-sm>
     <v-layout wrap>
-      <v-flex xs4 lg2 v-for="pod of podcasts" :key="pod.id">
-        <v-card @click="onPodcastClick(pod)" elevation="8" tile class="ma-1">
-          <v-img v-bind:src="getImageURL(pod)"></v-img>
-          <v-card-text class="d-none d-md-block">
-            <p style class="overflow my-0 py-0 display-11 text--primary">{{ pod.title }}</p>
-            <p class="overflow my-0 py-0">{{ pod.author || "Unknown"}}</p>
-          </v-card-text>
-        </v-card>
+      <v-flex xs2 lg2 v-for="pod of podcasts" :key="pod.id">
+        <v-hover v-slot:default="{ hover }">
+          <v-card @click="onPodcastClick(pod)" :elevation="hover ? 18 : 2" tile class="ma-1">
+            <v-img v-bind:src="getImageURL(pod)"></v-img>
+          </v-card>
+        </v-hover>
       </v-flex>
     </v-layout>
   </v-container>

@@ -33,7 +33,20 @@
                 <td class="overflow">{{ ep.title }}</td>
                 <td width="120">{{ formatDuration(ep.duration) }}</td>
                 <td width="125">{{ formatDate(ep.published) }}</td>
-                <td class="overflow">{{ ep.description }}</td>
+                <td>
+                  <v-layout>
+                    <span class="text-truncate" style="max-width: 300px">{{ ep.description }}</span>
+                    <v-menu v-model="menu" max-width="544">
+                      <template v-slot:activator="{ on }">
+                        <v-icon right small v-on="on" class="right-img">mdi-information-variant</v-icon>
+                      </template>
+                      <v-card>
+                        <v-card-title>{{ep.title}}</v-card-title>
+                        <v-card-text v-html="ep.description"></v-card-text>
+                      </v-card>
+                    </v-menu>
+                  </v-layout>
+                </td>
               </tr>
             </tbody>
           </template>
@@ -109,7 +122,6 @@ export default {
 
 <style>
 .overflow {
-  max-width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
