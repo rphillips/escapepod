@@ -18,7 +18,7 @@ frontend-deps:
 	
 .PHONY: run-frontend
 run-frontend:
-	cd frontend-vue && yarn start
+	cd frontend-vue && yarn serve
 
 .PHONY: clean
 clean:
@@ -34,7 +34,7 @@ dist: build
 
 .PHONY: run
 run: build
-	./${BINARY}
+	./${BINARY} serve
 
 .PHONY: pack-releases
 pack-releases:
