@@ -10,8 +10,8 @@ require (
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/jinzhu/gorm v1.9.10
 	github.com/knadh/stuffbin v1.0.0
-	github.com/labstack/echo/v4 v4.1.10
-	github.com/labstack/gommon v0.3.0
+	github.com/labstack/echo/v4 v4.9.0
+	github.com/labstack/gommon v0.3.1
 	github.com/lib/pq v1.2.0
 	github.com/magiconair/properties v1.8.1 // indirect
 	github.com/mattn/go-sqlite3 v1.11.0 // indirect
@@ -24,9 +24,7 @@ require (
 	github.com/spf13/cobra v0.0.5
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.4.0
-	golang.org/x/crypto v0.0.0-20190820162420-60c769a6c586 // indirect
 	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
-	golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7 // indirect
 )
 
 replace github.com/ugorji/go v1.1.4 => github.com/ugorji/go/codec v0.0.0-20190204201341-e444a5086c43
